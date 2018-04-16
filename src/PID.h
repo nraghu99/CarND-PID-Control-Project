@@ -1,3 +1,4 @@
+
 #ifndef PID_H
 #define PID_H
 
@@ -16,6 +17,7 @@ public:
   double Kp;
   double Ki;
   double Kd;
+   
 
   /*
   * Constructor
@@ -41,6 +43,8 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+    
+   
 };
 
 #endif /* PID_H */
