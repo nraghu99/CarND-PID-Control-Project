@@ -35,7 +35,15 @@ int main()
   PID pid;
   // TODO: Initialize the pid variable.
    
-    pid.Init(0.19, 0.005, 3.1);
+    
+    //pid.Init(0.25,0.25,0.25); //  -- first one for video
+    //pid.Init(0.25,0.005,0.25); //  -- sec0nd one for video
+   // pid.Init(0.25,0.005,3.0); //  -- third one for video, and input to twiddle
+   // pid.Init(0.19, 0.005, 3.1);  -- first one
+   //  pid.Init(0.25,0.005,3.0); -- input to twiddle
+    pid.Init(0.275,0.0049955,2.99757); //-- output of twiddle -- good value and final value
+    
+   
     
     h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -75,9 +83,13 @@ int main()
           double steer_abs =  abs(steer_value);
           double speed_factor = speed/75.0;
           double throttle = 0.65 - ((steer_abs * steer_abs)/2.0)  - (speed_factor * speed_factor);
+            if (throttle < 0.05) {
+                throttle  = 0.15;
+            }
           msgJson["throttle"] = throttle;
          // msgJson["throttle"] = (1 - std::abs(steer_value)) * 0.4 ;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
+            // DEBUG
           std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
         }
