@@ -55,7 +55,7 @@ CTE: -0.459 Steering Value: 0.31944
  perror -0.5997 derror -0.1407 ierror 21.8864
  
  
- As you can see, the ierror was having a skewed influence on the steering angle, so I bumped the 
+ As you can see, the iError was having a skewed influence on the steering angle, so I bumped the 
  Pi way down to 0.005, the sults were much better, see video below
  
  1. Now with Kp, Ki and Kd at 0.25, 0.005, and 0.25
