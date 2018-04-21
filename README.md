@@ -41,7 +41,7 @@ Tips for setting up your environment can be found [here](https://classroom.udaci
 1. I started out with the arbitrary values for Kp, Ki and Kd.
 2.  choose 0.25, 0,25 and 0.25
 3. The resulting drive simulation is here
-4. [randomcoeefs](https://www.youtube.com/watch?v=Srgyr8iReeY)
+4. [SimulatorWithRandomcoeefs](https://www.youtube.com/watch?v=Srgyr8iReeY)
 
 The error values were
  
@@ -60,7 +60,7 @@ CTE: -0.459 Steering Value: 0.31944
  
  1. Now with Kp, Ki and Kd at 0.25, 0.005, and 0.25
  
- 2. [KiReduced](https://www.youtube.com/watch?v=J6jkf0_xHb8)
+ 2. [SimulatoWithKiReduced](https://www.youtube.com/watch?v=J6jkf0_xHb8)
  the error values were
  3. 42["steer",{"steering_angle":1.421892,"throttle":0.15}]
  perror -4.8137 derror 0.6241 ierror -36.8771
@@ -74,7 +74,7 @@ CTE: -3.9911 Steering Value: 0.996466
  The car was oscillating a lot ,and derror is not having much influence, so i bumped the Kd value to 3.0
  1. Now with Kp, Ki and Kd at 0.25, 0.005, and 3.0
   
- 2. [KiReducedAndKdBumpedwayup](https://www.youtube.com/watch?v=Gh3RGXowm4I)
+ 2. [SimulatorWithKiReducedAndKdBumpedwayup](https://www.youtube.com/watch?v=Gh3RGXowm4I)
  
  
  3. I also turned twiddle on after seeing that the car was staying on the road
