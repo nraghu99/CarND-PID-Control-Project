@@ -37,7 +37,76 @@ There's an experimental patch for windows in this [PR](https://github.com/udacit
 
 Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
 
-## Editor Settings
+## Reflection
+I started out with the arbitrary values for Kp, Ki and Kd.
+I choose 0.25, 0,25 and 0.25
+The resulting drive simulation is here
+[randomcoeefs](https://www.youtube.com/watch?v=Srgyr8iReeY)
+
+The error values were
+ 
+42["steer",{"steering_angle":0.0254799999999999,"throttle":0.469480794755556}]
+ perror -0.3599 derror -0.0594 ierror 22.9451
+CTE: -0.3599 Steering Value: 0.16533
+42["steer",{"steering_angle":0.1653295,"throttle":0.454025712239764}]
+ perror -0.459 derror -0.0991 ierror 22.4861
+CTE: -0.459 Steering Value: 0.31944
+42["steer",{"steering_angle":0.3194395,"throttle":0.414443663143875}]
+ perror -0.5997 derror -0.1407 ierror 21.8864
+ 
+ 
+ As you can see, the ierror was having a skewed influence on the steering angle, so I bumped the 
+ Pi way down to 0.005, the sults were much better, see video below
+ Now with Kp, Ki and Kd at 0.25, 0.005, and 0.25
+ [KiReduced](https://www.youtube.com/watch?v=J6jkf0_xHb8)
+ the error values were
+  42["steer",{"steering_angle":1.421892,"throttle":0.15}]
+ perror -4.8137 derror 0.6241 ierror -36.8771
+CTE: -4.8137 Steering Value: 1.23179
+42["steer",{"steering_angle":1.2317855,"throttle":0.15}]
+ perror -3.9911 derror 0.8226 ierror -40.8682
+CTE: -3.9911 Steering Value: 0.996466
+42["steer",{"steering_angle":0.996466,"throttle":0.15}]
+ perror -2.6672 derror 1.3239 ierror -43.5354
+ 
+ The car was oscillating a lot ,and derror is not having much influence, so i bumped the Kd value to 3.0
+ Now with Kp, Ki and Kd at 0.25, 0.005, and 3.0
+ I get 
+ [KiAndKdBumpedwayup](https://www.youtube.com/watch?v=Gh3RGXowm4I)
+ 
+ 
+ I also turned twiddle on after seeing that the car was staying on the road
+ so with Kp, Ki, Kd at 0,25, 0.005 and 3.0, I turned on twiddle and the output error was
+ After about 4 laps the twiddled params were
+ Kpd 0.02475 Kdd 0.243 Kid 0.000495
+ Kp 0.275 Kd 3 Ki 0.0045
+ Kp 0.275 Kd 3 Ki 0.0045
+ perror -0.3263 derror -0.016 ierror 21.4915
+ Kpd 0.022275 Kdd 0.243 Kid 0.000495
+ Kp 0.275 Kd 3.243 Ki 0.0045
+ Kp 0.275 Kd 3.243 Ki 0.0045
+ perror 0.0339 derror -0.0591 ierror 10.1558
+ Kpd 0.022275 Kdd 0.243 Kid 0.000495
+ Kp 0.275 Kd 3.243 Ki 0.0045
+ Kp 0.275 Kd 3.243 Ki 0.0045
+ perror -0.1599 derror -0.0416 ierror 19.8111
+ Kpd 0.022275 Kdd 0.2673 Kid 0.000495
+Kp 0.275 Kd 2.99757 Ki 0.0049955
+ pid.Init(0.275,0.0049955,2.99757); //-- output of twiddle -- good value and final value
+ 
+ 
+ So finally I used this fine precision params of
+ Kp, Ki and Kd 0.275, 0.0049955
+ 
+ I then turnd twiddle off and ran the simulator and the carran like a champ
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 We've purposefully kept editor configuration files out of this repo in order to
 keep it as simple and environment agnostic as possible. However, we recommend
