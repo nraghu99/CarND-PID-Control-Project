@@ -94,22 +94,12 @@ CTE: -3.9911 Steering Value: 0.996466
  Kp 0.275 Kd 3.243 Ki 0.0045
  perror -0.1599 derror -0.0416 ierror 19.8111
  9. Kpd 0.022275 Kdd 0.2673 Kid 0.000495
-Kp 0.275 Kd 2.99757 Ki 0.0049955
+   Kp 0.275 Kd 2.99757 Ki 0.0049955 So finally I used this fine precision params of
+10. Kp, Ki and Kd 0.275, 0.0049955
+ 
+ I then turnd twiddle off and ran the simulator and the car ran like a champ
+ 
 
- 
- 
- So finally I used this fine precision params of
- 10. Kp, Ki and Kd 0.275, 0.0049955
- 
- I then turnd twiddle off and ran the simulator and the carran like a champ
- 
- 
- 
- 
- 
- 
- 
- 
 
 We've purposefully kept editor configuration files out of this repo in order to
 keep it as simple and environment agnostic as possible. However, we recommend
