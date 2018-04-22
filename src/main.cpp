@@ -73,6 +73,14 @@ int main()
           */
             // Calculate steering value (if reasonable error, returns between [-1, 1])
             steer_value = pid.TotalError();
+            if (speed > 50) {
+                steer_value = steer_value * .10;
+                
+            }
+            else if (speed > 10) {
+                steer_value = (1 - ((speed - 10.0)/ 50.0)) * steer_value;
+            }
+            
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
@@ -81,7 +89,7 @@ int main()
           //msgJson["throttle"] = 0.3;
           // Adjust the throttle based on current speed and steering angle
           double steer_abs =  abs(steer_value);
-          double speed_factor = speed/75.0;
+          double speed_factor = speed/100.0;
           double throttle = 0.65 - ((steer_abs * steer_abs)/2.0)  - (speed_factor * speed_factor);
             if (throttle < 0.05) {
                 throttle  = 0.15;
