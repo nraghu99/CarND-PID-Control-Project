@@ -99,6 +99,10 @@ CTE: -3.9911 Steering Value: 0.996466
  
  I then turnd twiddle off and ran the simulator and the car ran like a champ
  
+ 
+ I made one more optimization. Now the steering angle is dependent on the speed
+ as well. Now the ride is really smooth.No more wobbling on a straight road at high speeds
+ 
 
 
 We've purposefully kept editor configuration files out of this repo in order to
